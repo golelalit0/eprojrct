@@ -1,0 +1,43 @@
+{% extends  'nav.html' %}
+
+{% block title %}
+Airspex reset password
+{% endblock title %}
+
+{% block body %}
+
+{% endblock body %}
+
+
+{% block style %}
+<style>
+  .myform{
+    
+   position:absolute;
+   right:200px;
+   height:100px;
+  }
+
+</style>
+
+{% endblock style %}
+
+{% block form %}
+<h1 data-aos = "fade-up"> Request to reset link  </h1>
+<br><br><br>
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong></strong>{{message}}
+  {% endfor %}
+<form class="myform" action="/eauth/request-reset-email/" method="post"> {% csrf_token %}
+
+  <div class="row rtwo">
+      <div class="form-group col-md-6 ffour py-3">
+          <input type="email" class="form-control lm" placeholder="knwst@gmail.com" name="email">
+      </div>
+      <button type="submit">submit</button>
+  </div>
+</form>
+{% endblock form %}
+
+

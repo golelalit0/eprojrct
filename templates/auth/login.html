@@ -1,0 +1,60 @@
+{% extends  'nav.html' %}
+
+{% block title %}
+Airspex login
+{% endblock title %}
+
+{% block body %}
+
+{% endblock body %}
+
+
+{% block style %}
+<style>
+  .myform{
+    
+   position:absolute;
+   right:200px;
+   height:100px;
+  }
+
+</style>
+
+{% endblock style %}
+
+{% block form %}
+<h1 data-aos = "fade-up"> LOG IN </h1>
+<br><br><br>
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong></strong>{{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+<form class="myform" action="/eauth/login/" method="post"> {% csrf_token %}
+
+  <div class="row rtwo">
+      <div class="form-group col-md-6 ffour py-3">
+          <input type="email" class="form-control lm" placeholder="knwst@gmail.com" name="email">
+      </div>
+  </div>
+  <div class="row rthree">
+      <div class="form-group col-md-6 ffive py-3">
+          <input type="password" class="form-control" placeholder="Password" name="pass1">
+      </div>
+  </div>
+  <div class="row rfour">
+      <div class="form-group col-md-6 fseven py-3">
+          <button type="submit" class="btn btn-primary"><span>login</span></button>
+      </div>
+      <div class="form-group col-md-6 feight py-3">
+        <br><br><br>
+          <p class="text-muted" >Create An Account<br><a href="/eauth/signup/">Sign up</a></p>
+          <br><br>
+          <span>Forget Password? <a href="/eauth/request-reset-email/">reset</a></span>
+      </div>
+  </div>
+</form>
+{% endblock form %}
+
+
